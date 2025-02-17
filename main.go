@@ -18,7 +18,7 @@ func ReplaceSpaces(name string) string {
 }
 
 // render404 renders the custom 404 page using the provided template.
-func render404(tpl *template.Template, w http.ResponseWriter, r *http.Request) {
+func render404(tpl *template.Template, w http.ResponseWriter) {
 	w.WriteHeader(http.StatusNotFound)
 	if err := tpl.ExecuteTemplate(w, "404.html", nil); err != nil {
 		http.Error(w, "404 - Page Not Found", http.StatusNotFound)
@@ -47,7 +47,7 @@ func main() {
 	// If the URL path isn't exactly "/", we render the custom 404 page.
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
-			render404(tpl, w, r)
+			render404(tpl, w)
 			return
 		}
 		handlers.HomeHandler(tpl)(w, r)
