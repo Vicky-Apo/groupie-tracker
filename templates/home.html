@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Groupie Tracker - Artists</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+    <h1>All Artists</h1>
+    <ul>
+        {{range .}}
+        <li>
+            <a href="/artist/{{.Name}}">
+                <img src="{{.Image}}" alt="{{.Name}}" style="height:50px" />
+                {{.Name}}
+            </a>
+        </li>
+        {{end}}
+    </ul>
+
+    <button id="eventBtn">Trigger Event</button>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

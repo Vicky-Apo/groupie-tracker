@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Groupie Trackers</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>{{.Artist.Name}}</h1>
+      <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" style="height:150px" />
+    
+      <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+      <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
+    
+      <h3>Members:</h3>
+      <ul>
+        {{range .Artist.Members}}
+          <li>{{.}}</li>
+        {{else}}
+          <li>No members listed</li>
+        {{end}}
+      </ul>
+    
+      <h3>Locations:</h3>
+      <ul>
+        {{range .Locations}}
+          <li>{{.}}</li>
+        {{else}}
+          <li>No locations found</li>
+        {{end}}
+      </ul>
+    
+      <h3>Dates:</h3>
+      <ul>
+        {{range .Dates}}
+          <li>{{.}}</li>
+        {{else}}
+          <li>No dates available</li>
+        {{end}}
+      </ul>
+    
+      <h3>Dates/Locations (Map):</h3>
+      {{if .DatesLocMap}}
+        {{range $location, $dates := .DatesLocMap}}
+          <h4>{{$location}}</h4>
+          <ul>
+            {{range $dates}}
+              <li>{{.}}</li>
+            {{else}}
+              <li>No dates for this location</li>
+            {{end}}
+          </ul>
+        {{end}}
+      {{else}}
+        <p>No date/location map available</p>
+      {{end}}
+    
+      <p><a href="/">Return to home</a></p>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Groupie Trackers</p>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
