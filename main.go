@@ -6,22 +6,31 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+	"strings"
 
 	"groupie-tracker/internal/data"
 	"groupie-tracker/internal/handlers"
 )
+
+// ReplaceSpaces replaces spaces with dashes in artist names for clean URLs
+func ReplaceSpaces(name string) string {
+	return strings.ReplaceAll(name, " ", "-")
+}
 
 func main() {
 	// Load data from API
 	if err := data.LoadData(); err != nil {
 		log.Fatalf("Error loading data: %v", err)
 	}
-	// Parse all templates in templates/*.html
-	tmplPattern := filepath.Join("templates", "*.html")
-	tpl, err := template.ParseGlob(tmplPattern)
-	if err != nil {
-		log.Fatalf("Error parsing templates: %v", err)
+
+	// Define custom template functions
+	funcMap := template.FuncMap{
+		"replaceSpaces": ReplaceSpaces,
 	}
+
+	// Parse all templates and apply the function map
+	tmplPattern := filepath.Join("templates", "*.html")
+	tpl := template.Must(template.New("").Funcs(funcMap).ParseGlob(tmplPattern))
 
 	// Register handlers
 	http.HandleFunc("/", handlers.HomeHandler(tpl))

@@ -10,7 +10,7 @@
     <ul>
         {{range .}}
         <li>
-            <a href="/artist/{{.Name}}">
+            <a href="/artist/{{.Name | replaceSpaces}}">
                 <img src="{{.Image}}" alt="{{.Name}}" style="height:50px" />
                 {{.Name}}
             </a>

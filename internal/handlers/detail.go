@@ -12,14 +12,16 @@ import (
 // DetailHandler handles the "/artist/{name}" route
 func DetailHandler(tpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		// Extract artist name from URL
+		// Extract artist name from URL and replace "-" back to spaces
 		artistName := strings.TrimPrefix(r.URL.Path, "/artist/")
+		artistName = strings.ReplaceAll(artistName, "-", " ")
+
 		if artistName == "" {
 			http.NotFound(w, r)
 			return
 		}
 
-		// Find the artist by name
+		// Find the artist by name (case-insensitive)
 		var foundArtist *data.Artist
 		for i := range data.AllArtists {
 			if strings.EqualFold(data.AllArtists[i].Name, artistName) {
