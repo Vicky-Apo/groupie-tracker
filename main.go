@@ -6,16 +6,11 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
-	"strings"
 
 	"groupie-tracker/internal/data"
 	"groupie-tracker/internal/routes"
+	"groupie-tracker/internal/utils"
 )
-
-// ReplaceSpaces replaces spaces with dashes in artist names.
-func ReplaceSpaces(name string) string {
-	return strings.ReplaceAll(name, " ", "-")
-}
 
 func main() {
 	// Load data from API.
@@ -25,7 +20,7 @@ func main() {
 
 	// Define custom template functions.
 	funcMap := template.FuncMap{
-		"replaceSpaces": ReplaceSpaces,
+		"replaceSpaces": utils.ReplaceSpaces,
 	}
 
 	// Parse all templates.
