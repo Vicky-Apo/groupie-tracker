@@ -6,3 +6,8 @@ import "strings"
 func ReplaceSpaces(s string) string {
 	return strings.ReplaceAll(s, " ", "-")
 }
+
+// CleanDate removes all asterisk (*) characters from a date string.
+func CleanDate(date string) string {
+	return strings.ReplaceAll(date, "*", "")
+}

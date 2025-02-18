@@ -21,6 +21,7 @@ func main() {
 	// Define custom template functions.
 	funcMap := template.FuncMap{
 		"replaceSpaces": utils.ReplaceSpaces,
+		"cleanDate":     utils.CleanDate,
 	}
 
 	// Parse all templates.

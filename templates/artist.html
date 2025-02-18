@@ -40,7 +40,7 @@
       <h3>Dates:</h3>
       <ul>
         {{range .Dates}}
-          <li>{{.}}</li>
+          <li>{{ cleanDate . }}</li>
         {{else}}
           <li>No dates available</li>
         {{end}}
