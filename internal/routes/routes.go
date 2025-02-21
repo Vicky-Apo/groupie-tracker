@@ -31,6 +31,9 @@ func NewRouter(tpl *template.Template) *http.ServeMux {
 	// Artist detail route.
 	mux.HandleFunc("/artist/", handlers.DetailHandler(tpl))
 
+	// API Route for fetching artists
+	mux.HandleFunc("/api/artists", handlers.GetArtists)
+
 	// Trigger event route.
 	mux.HandleFunc("/trigger-event", handlers.TriggerEventHandler)
 

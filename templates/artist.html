@@ -1,74 +1,129 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Groupie Trackers</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/static/css/style.css" />
-  </head>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker - Artist Details</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #290f0f, #632b2b, #432424);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .title {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
+            margin-top: 20px;
+        }
+        .artist-details {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff6600, 0 0 15px #ff3300;
+        }
+        .artist-details img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+        h3 {
+            color: #ff6600;
+            margin-top: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+        a:hover {
+            text-shadow: 0 0 5px #ff6600;
+        }
+        footer {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
     <header>
-      <nav>
-        <a href="/">Home</a>
-      </nav>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+        </nav>
     </header>
 
     <main>
-      <h1>{{.Artist.Name}}</h1>
-      <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" style="height:150px" />
-    
-      <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
-      <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
-    
-      <h3>Members:</h3>
-      <ul>
-        {{range .Artist.Members}}
-          <li>{{.}}</li>
-        {{else}}
-          <li>No members listed</li>
-        {{end}}
-      </ul>
-    
-      <h3>Locations:</h3>
-      <ul>
-        {{range .Locations}}
-          <li>{{.}}</li>
-        {{else}}
-          <li>No locations found</li>
-        {{end}}
-      </ul>
-    
-      <h3>Dates:</h3>
-      <ul>
-        {{range .Dates}}
-          <li>{{ cleanDate . }}</li>
-        {{else}}
-          <li>No dates available</li>
-        {{end}}
-      </ul>
-    
-      <h3>Dates/Locations (Map):</h3>
-      {{if .DatesLocMap}}
-        {{range $location, $dates := .DatesLocMap}}
-          <h4>{{$location}}</h4>
-          <ul>
-            {{range $dates}}
-              <li>{{.}}</li>
+        <h1 class="title">{{.Artist.Name}}</h1>
+        <div class="artist-details">
+            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
+            <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+            <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
+            
+            <h3>Members:</h3>
+            <ul>
+                {{range .Artist.Members}}
+                    <li>{{.}}</li>
+                {{else}}
+                    <li>No members listed</li>
+                {{end}}
+            </ul>
+            
+            <h3>Locations:</h3>
+            <ul>
+                {{range .Locations}}
+                    <li>{{.}}</li>
+                {{else}}
+                    <li>No locations found</li>
+                {{end}}
+            </ul>
+            
+            <h3>Dates:</h3>
+            <ul>
+                {{range .Dates}}
+                    <li>{{ cleanDate . }}</li>
+                {{else}}
+                    <li>No dates available</li>
+                {{end}}
+            </ul>
+            
+            <h3>Dates/Locations (Map):</h3>
+            {{if .DatesLocMap}}
+                {{range $location, $dates := .DatesLocMap}}
+                    <h4>{{$location}}</h4>
+                    <ul>
+                        {{range $dates}}
+                            <li>{{.}}</li>
+                        {{else}}
+                            <li>No dates for this location</li>
+                        {{end}}
+                    </ul>
+                {{end}}
             {{else}}
-              <li>No dates for this location</li>
+                <p>No date/location map available</p>
             {{end}}
-          </ul>
-        {{end}}
-      {{else}}
-        <p>No date/location map available</p>
-      {{end}}
-    
-      <p><a href="/">Return to home</a></p>
+        </div>
+        <p><a href="/">Return to home</a></p>
     </main>
 
     <footer>
-      <p>&copy; 2025 Groupie Trackers</p>
+        <p>&copy; 2025 Groupie Trackers</p>
     </footer>
 
     <script src="/static/js/app.js"></script>
-  </body>
+</body>
 </html>
+

@@ -1,15 +1,99 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header, footer {
-    background: #f0f0f0;
-    padding: 1rem;
-  }
-  
-  h1, h2, h3 {
-    color: #333;
-  }
+  font-family: 'Arial', sans-serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  padding: 1rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #ff00ff;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
+}
+
+.artist-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.artist-card {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.artist-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+}
+
+.artist-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interactive-btn {
+  background: #00ffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #0d0d0d;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+.interactive-btn:hover {
+  background: #ff00ff;
+  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  color: #ffffff;
+}
+
+.event-section {
+  margin-top: 20px;
+}
+
+.message {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #00ffff;
+  text-shadow: 0 0 5px #ff00ff;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  background: #0d0d0d;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
   

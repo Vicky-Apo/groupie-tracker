@@ -1,24 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker - Artists</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(to right, #290f0f, #632b2b, #432424);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        .title {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
+            margin-top: 20px;
+        }
+        .artist-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .artist-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ff6600, 0 0 15px #ff3300;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .artist-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff3300, 0 0 25px #ff6600;
+        }
+        .artist-img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .artist-card h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .interactive-btn {
+            background: #ff6600;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #0d0d0d;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
+        }
+        .interactive-btn:hover {
+            background: #ff3300;
+            box-shadow: 0 0 15px #ff3300, 0 0 30px #ff6600;
+            color: #ffffff;
+        }
+        footer {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            color: #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1>All Artists</h1>
-    <ul>
-        {{range .}}
-        <li>
-            <a href="/artist/{{.Name | replaceSpaces}}">
-                <img src="{{.Image}}" alt="{{.Name}}" style="height:50px" />
-                {{.Name}}
-            </a>
-        </li>
-        {{end}}
-    </ul>
+    <header>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+        </nav>
+    </header>
 
-    <button id="eventBtn">Trigger Event</button>
+    <main>
+        <h1 class="title">Explore Legendary Artists</h1>
+        <div class="artist-container" id="artistList">
+            {{range .}}
+            <div class="artist-card">
+                <a href="/artist/{{.Name | replaceSpaces}}">
+                    <img src="{{.Image}}" alt="{{.Name}}" class="artist-img" />
+                    <h3>{{.Name}}</h3>
+                </a>
+            </div>
+            {{end}}
+        </div>
+    </main>
+
+    <section class="event-section">
+        <button id="eventBtn" class="interactive-btn">Trigger Event</button>
+        <p id="eventMessage" class="hidden message"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Groupie Trackers | Made with 💙 for Music Lovers</p>
+    </footer>
 
     <script src="/static/js/app.js"></script>
 </body>
