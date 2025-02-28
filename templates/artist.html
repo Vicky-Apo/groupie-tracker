@@ -10,55 +10,75 @@
     <main>
         <h1 class="title">{{.Artist.Name}}</h1>
         <div class="artist-details">
-            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
-            <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
-            <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
-            
-            <h3>Members:</h3>
+          <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
+          <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+          <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
+    
+          <h3>
+            Members:
+            <button type="button" class="toggle-section" data-target="members-section">Show</button>
+          </h3>
+          <div id="members-section" style="display: none;">
             <ul>
-                {{range .Artist.Members}}
-                    <li>{{.}}</li>
-                {{else}}
-                    <li>No members listed</li>
-                {{end}}
+              {{range .Artist.Members}}
+                <li>{{.}}</li>
+              {{else}}
+                <li>No members listed</li>
+              {{end}}
             </ul>
-            
-            <h3>Locations:</h3>
+          </div>
+    
+          <h3>
+            Locations:
+            <button type="button" class="toggle-section" data-target="locations-section">Show</button>
+          </h3>
+          <div id="locations-section" style="display: none;">
             <ul>
-                {{range .Locations}}
-                    <li>{{.}}</li>
-                {{else}}
-                    <li>No locations found</li>
-                {{end}}
+              {{range .Locations}}
+                <li>{{.}}</li>
+              {{else}}
+                <li>No locations found</li>
+              {{end}}
             </ul>
-            
-            <h3>Dates:</h3>
+          </div>
+    
+          <h3>
+            Dates:
+            <button type="button" class="toggle-section" data-target="dates-section">Show</button>
+          </h3>
+          <div id="dates-section" style="display: none;">
             <ul>
-                {{range .Dates}}
-                    <li>{{ cleanDate . }}</li>
-                {{else}}
-                    <li>No dates available</li>
-                {{end}}
+              {{range .Dates}}
+                <li>{{ cleanDate . }}</li>
+              {{else}}
+                <li>No dates available</li>
+              {{end}}
             </ul>
-            
-            <h3>Dates/Locations (Map):</h3>
+          </div>
+    
+          <h3>
+            Dates/Locations (Map):
+            <button type="button" class="toggle-section" data-target="dates-locations-section">Show</button>
+          </h3>
+          <div id="dates-locations-section" style="display: none;">
             {{if .DatesLocMap}}
-                {{range $location, $dates := .DatesLocMap}}
-                    <h4>{{$location}}</h4>
-                    <ul>
-                        {{range $dates}}
-                            <li>{{.}}</li>
-                        {{else}}
-                            <li>No dates for this location</li>
-                        {{end}}
-                    </ul>
-                {{end}}
+              {{range $location, $dates := .DatesLocMap}}
+                <h4>{{$location}}</h4>
+                <ul>
+                  {{range $dates}}
+                    <li>{{.}}</li>
+                  {{else}}
+                    <li>No dates for this location</li>
+                  {{end}}
+                </ul>
+              {{end}}
             {{else}}
-                <p>No date/location map available</p>
+              <p>No date/location map available</p>
             {{end}}
+          </div>
         </div>
-        <p><a href="/">Return to home</a></p>
-    </main>
+        <p><a href="/" class="return-btn">Return to home</a></p>
+      </main>
 
     <footer>
         <p>&copy; 2025 Groupie Trackers</p>

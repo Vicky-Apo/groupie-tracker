@@ -118,26 +118,46 @@ a:hover {
   color: #ffffff;
 }
 
-.event-section {
-  margin-top: 20px;
+.toggle-section {
+  background: #ff6600;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  color: #0d0d0d;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 8px #ff6600, 0 0 16px #ff3300;
+  border-radius: 5px;
+  margin-left: 10px;
 }
 
-.message {
+.toggle-section:hover {
+  background: #ff3300;
+  box-shadow: 0 0 10px #ff3300, 0 0 20px #ff6600;
+  color: #ffffff;
+}
+
+.toggle-section:focus {
+  outline: none;
+  box-shadow: 0 0 12px #ff3300, 0 0 24px #ff6600;
+}
+
+.return-btn {
+  display: inline-block;
+  background: #ff6600;
+  border: none;
+  padding: 10px 20px;
   font-size: 1.2rem;
-  margin-top: 10px;
-  color: #00ffff;
-  text-shadow: 0 0 5px #ff00ff;
+  color: #0d0d0d;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
+  border-radius: 5px;
 }
 
-.hidden {
-  display: none;
+.return-btn:hover {
+  background: #ff3300;
+  box-shadow: 0 0 15px #ff3300, 0 0 30px #ff6600;
+  color: #ffffff;
 }
-
-footer {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  color: #ccc;
-}
-
-  
