@@ -1,10 +1,13 @@
 body {
+  background: linear-gradient(to right, #290f0f, #632b2b, #432424);
+  color: white;
   font-family: 'Arial', sans-serif;
-  background-color: #0d0d0d;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
   text-align: center;
+}
+.title {
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
+  margin-top: 20px;
 }
 
 header {
@@ -23,33 +26,33 @@ header {
   color: #ff00ff;
 }
 
-.title {
-  font-size: 2.5rem;
-  text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
-}
-
 .artist-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 40px;
-  justify-content: center;
   max-width: 1200px;
   margin: auto;
 }
 
 .artist-card {
-  background: #1a1a1a;
+  background: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
+  box-shadow: 0 0 10px #ff6600, 0 0 15px #ff3300;
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
 }
 
 .artist-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+  box-shadow: 0 0 15px #ff3300, 0 0 25px #ff6600;
+}
+
+.artist-card h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 10px;
 }
 
 .artist-img {
@@ -57,20 +60,61 @@ header {
   border-radius: 5px;
 }
 
+.artist-details {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff6600, 0 0 15px #ff3300;
+}
+
+.artist-details img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+h3 {
+  color: #ff6600;
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+a {
+  color: #ff6600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 5px #ff6600;
+}
+
 .interactive-btn {
-  background: #00ffff;
+  background: #ff6600;
   border: none;
   padding: 10px 20px;
   font-size: 1.2rem;
   color: #0d0d0d;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+  box-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
 }
 
 .interactive-btn:hover {
-  background: #ff00ff;
-  box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+  background: #ff3300;
+  box-shadow: 0 0 15px #ff3300, 0 0 30px #ff6600;
   color: #ffffff;
 }
 
@@ -90,10 +134,10 @@ header {
 }
 
 footer {
-  background: #0d0d0d;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
   padding: 10px;
-  font-size: 0.9rem;
-  color: #888;
+  color: #ccc;
 }
 
   

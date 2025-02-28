@@ -30,7 +30,7 @@ func DetailHandler(tpl *template.Template) http.HandlerFunc {
 			}
 		}
 		if foundArtist == nil {
-			http.NotFound(w, r)
+			handler404(tpl, w)
 			return
 		}
 

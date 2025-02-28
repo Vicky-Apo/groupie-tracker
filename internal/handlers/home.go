@@ -13,6 +13,11 @@ import (
 // HomeHandler handles the "/" route and renders the home page.
 func HomeHandler(tpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet || r.URL.Path != "/" {
+			handler404(tpl, w)
+			return
+		}
+
 		if len(data.AllArtists) == 0 {
 			log.Println("ERROR: No artist data available")
 			http.Error(w, "No artist data available", http.StatusInternalServerError)
@@ -32,6 +37,14 @@ func HomeHandler(tpl *template.Template) http.HandlerFunc {
 			log.Println("ERROR rendering template:", err)
 			http.Error(w, "Internal Server Error while rendering index", http.StatusInternalServerError)
 		}
+	}
+}
+
+// render404 renders a custom 404 page.
+func handler404(tpl *template.Template, w http.ResponseWriter) {
+	w.WriteHeader(http.StatusNotFound)
+	if err := tpl.ExecuteTemplate(w, "404.html", nil); err != nil {
+		http.Error(w, "404 - Page Not Found", http.StatusNotFound)
 	}
 }
 

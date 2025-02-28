@@ -5,67 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groupie Tracker - Artist Details</title>
     <link rel="stylesheet" href="/static/css/style.css">
-    <style>
-        body {
-            background: linear-gradient(to right, #290f0f, #632b2b, #432424);
-            color: white;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-        }
-        .title {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px #ff6600, 0 0 20px #ff3300;
-            margin-top: 20px;
-        }
-        .artist-details {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ff6600, 0 0 15px #ff3300;
-        }
-        .artist-details img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-        }
-        h3 {
-            color: #ff6600;
-            margin-top: 20px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            background: rgba(255, 255, 255, 0.1);
-            margin: 5px 0;
-            padding: 8px;
-            border-radius: 5px;
-        }
-        a {
-            color: #ff6600;
-            text-decoration: none;
-        }
-        a:hover {
-            text-shadow: 0 0 5px #ff6600;
-        }
-        footer {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            color: #ccc;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/" class="nav-link">Home</a>
-        </nav>
-    </header>
-
     <main>
         <h1 class="title">{{.Artist.Name}}</h1>
         <div class="artist-details">
