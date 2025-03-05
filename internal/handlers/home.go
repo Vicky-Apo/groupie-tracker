@@ -13,7 +13,12 @@ import (
 // HomeHandler handles the "/" route and renders the home page.
 func HomeHandler(tpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != http.MethodGet || r.URL.Path != "/" {
+		if r.Method != http.MethodGet {
+			http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+			return
+		}
+
+		if r.URL.Path != "/" {
 			handler404(tpl, w)
 			return
 		}

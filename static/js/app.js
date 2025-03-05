@@ -1,19 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("eventBtn");
-    if (btn) {
+  const btn = document.getElementById("eventBtn");
+  if (btn) {
       btn.addEventListener("click", () => {
-        fetch("/trigger-event")
+          fetch("/trigger-event", {
+              method: "POST", // Change from GET to POST
+              headers: {
+                  "Content-Type": "application/json"
+              }
+          })
           .then(response => response.json())
           .then(data => {
-            alert(data.status);
+              alert(data.status);
           })
           .catch(err => {
-            console.error(err);
-            alert("Error triggering event");
+              console.error(err);
+              alert("Error triggering event");
           });
       });
-    }
-  });
+  }
+});
 
       // Toggle the display of the extra details container when the button is clicked
 document.querySelectorAll('.toggle-section').forEach(function(button) {

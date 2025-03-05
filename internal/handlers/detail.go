@@ -12,6 +12,11 @@ import (
 // DetailHandler handles the "/artist/{name}" route
 func DetailHandler(tpl *template.Template) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodGet {
+			http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
+			return
+		}
+
 		// Extract artist name from URL and replace "-" back to spaces
 		artistName := strings.TrimPrefix(r.URL.Path, "/artist/")
 		artistName = strings.ReplaceAll(artistName, "-", " ")
