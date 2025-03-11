@@ -25,6 +25,11 @@ func NewRouter(tpl *template.Template) *http.ServeMux {
 	// Trigger event route.
 	mux.HandleFunc("/trigger-event", handlers.TriggerEventHandler)
 
+	// About page route
+	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
+		tpl.ExecuteTemplate(w, "about.html", nil)
+	})
+
 	// Serve static files.
 	fs := http.FileServer(http.Dir("static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))

@@ -6,9 +6,17 @@
     <title>Groupie Tracker - Artists</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+
+<header>
+    <h1 class="title">Explore Legendary Artists</h1>
+    <nav>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About</a> <!-- 🔥 New About Button -->
+    </nav>
+</header>
+
 <body>
     <main>
-        <h1 class="title">Explore Legendary Artists</h1>
         <div class="artist-container" id="artistList">
             {{range .}}
             <div class="artist-card">

@@ -1,73 +1,171 @@
+/* Global Color Variables */
+:root {
+  --bg-color: #2e2e2e;          /* Lighter dark background */
+  --text-color: #d4d4d4;          /* Soft off-white text */
+  --accent-color: #6a5acd;        /* Slate blue accent for headings and links */
+  --card-bg: rgba(255, 255, 255, 0.1); /* Slightly lighter overlay for cards/containers */
+  --shadow-color: rgba(106, 90, 205, 0.3); /* Soft cool glow for shadows */
+}
+
+/* Base Styles */
 body {
-  background: #000000;
-  color: white;
-  font-family: 'UnifrakturMaguntia', 'Garamond', serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Cinzel', 'Garamond', serif;
   text-align: center;
 }
+
+/* Title */
 .title {
   font-size: 2.5rem;
-  text-shadow: 0 0 10px #8b0000, 0 0 20px #550000;
+  text-shadow: 0 0 4px var(--shadow-color);
   margin-top: 20px;
 }
 
+/* Header with dark purple radiant gradient */
 header {
-  background: linear-gradient(90deg, #8b0000,  #550000);
+  background: linear-gradient(90deg, #2a0a3d, #4b0a55);
   padding: 1rem;
 }
 
+/* Navigation Links */
 .nav-link {
-  color: #ffffff;
+  color: var(--accent-color);
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: bold;
+  padding: 10px 15px;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-link:hover {
-  color: #8b0000;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
+nav {
+  margin-top: 10px;
+}
+
+/* Artist Details Page */
+.artist-details-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--shadow-color);
+  align-items: center;
+}
+
+/* Artist Image */
+.artist-image img {
+  max-width: 100%;
+  border: 4px solid var(--accent-color);
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 15px var(--shadow-color);
+  transition: transform 0.3s ease-in-out;
+}
+
+.artist-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--shadow-color);
+}
+
+/* Artist Info */
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--text-color);
+  text-align: left;
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.artist-info h3 {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-top: 15px;
+  text-shadow: 0 0 4px var(--shadow-color);
+}
+
+/* Responsive for Artist Details */
+@media (max-width: 768px) {
+  .artist-details-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .artist-image img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* Artist Container Grid */
 .artist-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 40px;
-  max-width: 1200px;
-  margin: auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
+@media (max-width: 1024px) {
+  .artist-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .artist-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Artist Card */
 .artist-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 0 15px #8b0000, 0 0 20px #550000;
+  box-shadow: 0 0 15px var(--shadow-color);
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
 }
 
 .artist-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #550000, 0 0 25px #8b0000;
+  box-shadow: 0 0 25px var(--shadow-color);
 }
 
 .artist-card h3 {
-  color: white;
+  color: var(--text-color);
   font-size: 1.2rem;
   margin-top: 10px;
 }
 
-.artist-img {
-  width: 100%;
-  border-radius: 5px;
-  border: 2px solid #8b0000;
-}
-
+/* Artist Details Section */
 .artist-details {
   max-width: 800px;
   margin: auto;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
   border-radius: 10px;
-  box-shadow: 0 0 10px #8b0000, 0 0 15px #550000;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .artist-details img {
@@ -76,101 +174,158 @@ header {
   border-radius: 10px;
 }
 
+/* Global Headings */
 h3 {
-  color: #8b0000;
-  margin-top: 20px;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  margin-top: 15px;
+  text-shadow: 0 0 4px var(--shadow-color);
 }
 
+/* List Styles */
 ul {
   list-style: none;
   padding: 0;
 }
 
 ul li {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-bg);
+  border: 1px solid var(--accent-color);
   margin: 5px 0;
-  padding: 8px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
+ul li:hover {
+  background: #444;
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  box-shadow: 0 0 8px rgba(128, 128, 128, 0.5), 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+/* Anchor Links */
 a {
-  color: #8b0000;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
 a:hover {
-  text-shadow: 0 0 5px #8b0000;
+  text-shadow: 0 0 4px var(--shadow-color);
 }
 
-.interactive-btn {
-  background: black;
-  border: 2px solid white;
+/* Interactive Buttons */
+.interactive-btn, .return-btn {
+  background: #000;
+  border: 1px solid var(--text-color);
   padding: 8px 16px;
   font-size: 1rem;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  box-shadow: 0 0 10px white, 0 0 15px gray;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   font-family: 'Garamond', serif;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
 }
 
-.interactive-btn:hover {
-  background: #8b0000;
-  color: white;
-  border: 2px solid #8b0000;
-  box-shadow: 0 0 15px #8b0000, 0 0 20px #550000;
+.interactive-btn:hover, .return-btn:hover {
+  background: #333;
+  border: 1px solid #555;
+  box-shadow: 0 0 25px var(--shadow-color);
 }
 
+.interactive-btn:active, .return-btn:active, .toggle-section:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+/* Toggle Section Button */
 .toggle-section {
-  background: black;
-  border: 2px solid white;
-  padding: 8px 16px;
+  background: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  padding: 10px 20px;
   font-size: 1rem;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  box-shadow: 0 0 10px white, 0 0 15px gray;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   font-family: 'Garamond', serif;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .toggle-section:hover {
-  background: #8b0000;
-  color: white;
-  border: 2px solid #8b0000;
-  box-shadow: 0 0 15px #8b0000, 0 0 20px #550000;
+  background: #444;
+  border: 1px solid var(--text-color);
+  box-shadow: 0 0 25px var(--shadow-color);
 }
 
 .toggle-section:focus {
   outline: none;
-  box-shadow: 0 0 12px #550000, 0 0 24px #8b0000;
+  box-shadow: 0 0 10px var(--shadow-color);
 }
 
-.return-btn {
-  background: black;
-  border: 2px solid white;
-  padding: 8px 16px;
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  box-shadow: 0 0 10px white, 0 0 15px gray;
-  border-radius: 5px;
-  font-family: 'Garamond', serif;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+/* About Page */
+.about-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: var(--bg-color);
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--shadow-color);
+  text-align: center;
 }
 
-.return-btn:hover {
-  background: #8b0000;
-  color: white;
-  border: 2px solid #8b0000;
-  box-shadow: 0 0 15px #8b0000, 0 0 20px #550000;
+.about-section h2 {
+  color: var(--text-color);
+  background: #241010;
+  font-size: 2rem;
+  text-shadow: 0 0 4px var(--shadow-color);
+  margin-bottom: 20px;
+}
 
-.interactive-btn:active, .return-btn:active, .toggle-section:active {
-    box-shadow: none;
-    transform: translateY(3px);
+/* Team Members Grid */
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.member {
+  background: var(--card-bg);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--shadow-color);
+}
+
+.member h3 {
+  color: var(--text-color);
+  font-size: 1.4rem;
+}
+
+.member p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+/* Responsive for Team Members */
+@media (max-width: 1024px) {
+  .team-members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-members {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
