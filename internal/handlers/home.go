@@ -37,7 +37,7 @@ func HomeHandler(tpl *template.Template) http.HandlerFunc {
 			return strings.ToLower(sortedArtists[i].Name) < strings.ToLower(sortedArtists[j].Name)
 		})
 
-		// Only pass the initial 8 artists.
+		// Only pass the initial 10 artists.
 		initialCount := 10
 		var initialArtists []data.Artist
 		if len(sortedArtists) > initialCount {

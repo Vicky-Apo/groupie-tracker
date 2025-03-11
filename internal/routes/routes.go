@@ -22,13 +22,13 @@ func NewRouter(tpl *template.Template) *http.ServeMux {
 	// API Route for fetching artists
 	mux.HandleFunc("/api/artists", handlers.GetArtists)
 
-	// Trigger event route.
-	mux.HandleFunc("/trigger-event", handlers.TriggerEventHandler)
-
-	// About page route
+	// About page section
 	mux.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
 		tpl.ExecuteTemplate(w, "about.html", nil)
 	})
+
+	// Trigger event route.
+	mux.HandleFunc("/trigger-event", handlers.TriggerEventHandler)
 
 	// Serve static files.
 	fs := http.FileServer(http.Dir("static"))

@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groupie Tracker - Artist Details</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groupie Tracker - Artist Details</title>
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+  <header>
+    <nav>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/about">About</a>
+    </nav>
+  </header>
   <main>
     <h1 class="title">{{.Artist.Name}}</h1>
     <div class="artist-details-container">
-        <!-- Left: Artist Image -->
-        <div class="artist-image">
-            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" />
+      <div class="artist-image">
+        <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+      </div>
+      <div class="artist-info">
+        <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
+        <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
+        
+        <h3>
+          Members:
+          <button type="button" class="toggle-section" data-target="members-section">Show</button>
+        </h3>
+        <div id="members-section" style="display: none;">
+          <ul>
+            {{range .Artist.Members}}
+              <li>{{.}}</li>
+            {{else}}
+              <li>No members listed</li>
+            {{end}}
+          </ul>
         </div>
         
-        <!-- Right: Artist Info -->
-        <div class="artist-info">
-            <p><strong>First Album:</strong> {{.Artist.FirstAlbum}}</p>
-            <p><strong>Creation Year:</strong> {{.Artist.CreationDate}}</p>
-
-            <h3>
-                Members:
-                <button type="button" class="toggle-section" data-target="members-section">Show</button>
-            </h3>
-            <div id="members-section" style="display: none;">
-                <ul>
-                    {{range .Artist.Members}}
-                        <li>{{.}}</li>
-                    {{else}}
-                        <li>No members listed</li>
-                    {{end}}
-                </ul>
-            </div>
-
-            <h3>
-                Locations:
-                <button type="button" class="toggle-section" data-target="locations-section">Show</button>
-            </h3>
-            <div id="locations-section" style="display: none;">
-                <ul>
-                    {{range .Locations}}
-                        <li>{{.}}</li>
-                    {{else}}
-                        <li>No locations found</li>
-                    {{end}}
-                </ul>
-            </div>
-
-            <h3>
-                Dates:
-                <button type="button" class="toggle-section" data-target="dates-section">Show</button>
-            </h3>
-            <div id="dates-section" style="display: none;">
-                <ul>
-                    {{range .Dates}}
-                        <li>{{ cleanDate . }}</li>
-                    {{else}}
-                        <li>No dates available</li>
-                    {{end}}
-                </ul>
-            </div>
-        </div> <!-- Close artist-info -->
-    </div> <!-- Close artist-details-container -->
-
-    <p><a href="/" class="return-btn">Return to home</a></p>
-</main>
-
-
-    <footer>
-        <p>&copy; 2025 Groupie Trackers</p>
-    </footer>
-
-    <script src="/static/js/app.js"></script>
+        <h3>
+          Locations:
+          <button type="button" class="toggle-section" data-target="locations-section">Show</button>
+        </h3>
+        <div id="locations-section" style="display: none;">
+          <ul>
+            {{range .Locations}}
+              <li>{{.}}</li>
+            {{else}}
+              <li>No locations found</li>
+            {{end}}
+          </ul>
+        </div>
+        
+        <h3>
+          Dates:
+          <button type="button" class="toggle-section" data-target="dates-section">Show</button>
+        </h3>
+        <div id="dates-section" style="display: none;">
+          <ul>
+            {{range .Dates}}
+              <li>{{ cleanDate . }}</li>
+            {{else}}
+              <li>No dates available</li>
+            {{end}}
+          </ul>
+        </div>
+        
+        <!-- Fourth Section: Dates/Locations Map -->
+        <h3>
+          Dates/Locations (Map):
+          <button type="button" class="toggle-section" data-target="dates-locations-section">Show</button>
+        </h3>
+        <div id="dates-locations-section" style="display: none;">
+          {{if .DatesLocMap}}
+            {{range $location, $dates := .DatesLocMap}}
+              <h4>{{$location}}</h4>
+              <ul>
+                {{range $dates}}
+                  <li>{{.}}</li>
+                {{else}}
+                  <li>No dates for this location</li>
+                {{end}}
+              </ul>
+            {{end}}
+          {{else}}
+            <p>No date/location map available</p>
+          {{end}}
+        </div>
+        
+      </div>
+    </div>
+    <p><a href="/" class="return-btn">Return to Home</a></p>
+  </main>
+  <footer>
+    <p>&copy; 2025 Groupie Trackers</p>
+  </footer>
+  <script src="/static/js/app.js"></script>
 </body>
 </html>
-
